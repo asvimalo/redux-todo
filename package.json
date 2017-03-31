@@ -1,0 +1,47 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "Simple React app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "karma start"
+  },
+  "author": "Andrés Martinez Losa",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "express": "^4.14.1",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "expect": "^1.14.0",
+    "foundation-sites": "^6.3.1",
+    "jquery": "^3.2.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-mocha": "^0.2.2",
+    "karma-mocha-reporter": "^2.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "moment": "^2.18.1",
+    "node-sass": "^3.4.2",
+    "node-uuid": "^1.4.8",
+    "react-addons-test-utils": "^15.4.2",
+    "redux": "^3.3.1",
+    "sass-loader": "^3.1.2",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.2",
+    "webpack": "^1.12.13"
+  }
+}
