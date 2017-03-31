@@ -1,1 +1,1 @@
-React Boiler Plate Application
+Redux-react exercise 
