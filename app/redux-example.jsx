@@ -1,16 +1,10 @@
 var redux = require('redux');
 
 console.log('Starting redux example');
-var defaultState = {
-  name: 'Anonymous',
-  hobbies: [],
-  movies: []
-};
-var nextHobbyId = 1;
-var nextMovieId = 1;
 // argument needs to be a pure function = reducer takes existing state and actions as arguments and it computes the new state
 
-
+// Name reducer and action generators
+// ----------------------------------
 var nameReducer = (state = 'Anonimous', action) => {
   switch(action.type) {
     case 'CHANGE_NAME':
@@ -19,6 +13,16 @@ var nameReducer = (state = 'Anonimous', action) => {
       return state;
   }
 };
+
+var changeName = (name) => {
+  return {
+    type: 'CHANGE_NAME',
+    name
+  }
+}
+// Hobbies reducer and action generators
+// ----------------------------------
+var nextHobbyId = 1;
 var hobbiesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_HOBBY':
@@ -36,6 +40,22 @@ var hobbiesReducer = (state = [], action) => {
       return state;
   }
 };
+
+var addHobby = (hobby) => {
+  return {
+    type: 'ADD_HOBBY',
+    hobby
+  }
+}
+var removeHobby = (id) => {
+  return {
+    type: 'REMOVE_HOBBY',
+    id
+  }
+}
+// Movies reducer and action generators
+// ----------------------------------
+var nextMovieId = 1;
 var moviesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_MOVIE':
@@ -55,6 +75,20 @@ var moviesReducer = (state = [], action) => {
       return state;
   }
 };
+var addMovie = (title, genre) => {
+  return {
+    type: 'ADD_MOVIE',
+    title,
+    genre
+  }
+}
+var removeMovie = (id) => {
+  return {
+    type: 'REMOVE_MOVIE',
+    id
+  }
+}
+
 var reducer = redux.combineReducers({
   name: nameReducer,
   hobbies: hobbiesReducer,
@@ -79,47 +113,17 @@ var currentState = store.getState();
 console.log('currentState', currentState);
 
 
-store.dispatch({
-  type: 'CHANGE_NAME',
-  name: 'Andrés'
-});
-store.dispatch({
-  type: 'ADD_HOBBY',
-  hobby: 'running'
-});
-store.dispatch({
-  type: 'ADD_HOBBY',
-  hobby: 'walking'
-});
-store.dispatch({
-  type: 'REMOVE_HOBBY',
-  id: 2
-})
+store.dispatch(changeName('Andrés'));
+store.dispatch(addHobby('flying'));
+store.dispatch(addHobby('swimming'));
+store.dispatch(addHobby('programming'));
+store.dispatch(removeHobby(1));
 // unsubscribe();
-store.dispatch({
-  type: 'ADD_MOVIE',
-  title: 'La Fuente',
-  genre: 'Drama'
-});
-store.dispatch({
-  type: 'ADD_MOVIE',
-  title: 'Los Pitufos',
-  genre: 'Animation'
-});
-
-store.dispatch({
-  type: 'ADD_MOVIE',
-  title: 'Inception',
-  genre: 'Thriller'
-});
-store.dispatch({
-  type: 'REMOVE_MOVIE',
-  id: 1
-});
+store.dispatch(addMovie('La Fuente','Drama'));
+store.dispatch(addMovie('Star Wars', 'Action'));
+store.dispatch(addMovie('Ciudade de Deus', 'Drama'));
+store.dispatch(removeMovie(1));
 
 
 //console.log('Name should be Andrés', store.getState());
-store.dispatch({
-  type: 'CHANGE_NAME',
-  name: 'Mario'
-});
+store.dispatch(changeName('Mario'));
