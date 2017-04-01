@@ -16,7 +16,6 @@ var reducer = (state = defaultState, action) => {
     default:
       return state;
   }
-
 }
 
 var store = redux.createStore(reducer, redux.compose(
