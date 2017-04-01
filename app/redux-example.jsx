@@ -29,6 +29,13 @@ var reducer = (state = defaultState, action) =>  {
             }
           ]
         };
+      case 'REMOVE_HOBBY':
+        return {
+          ...state,
+          hobbies: state.hobbies.filter((hobby) => {
+            return hobby.id !== action.id
+          })
+        };
       case 'ADD_MOVIE':
         return {
           ...state,
@@ -40,6 +47,13 @@ var reducer = (state = defaultState, action) =>  {
               genre: action.genre
             }
           ]
+        };
+      case 'REMOVE_MOVIE':
+        return {
+          ...state,
+          movies: state.movies.filter((movie) => {
+            return movie.id !== action.id
+          })
         }
      default:
       return state;
@@ -72,6 +86,14 @@ store.dispatch({
   type: 'ADD_HOBBY',
   hobby: 'running'
 });
+store.dispatch({
+  type: 'ADD_HOBBY',
+  hobby: 'walking'
+});
+store.dispatch({
+  type: 'REMOVE_HOBBY',
+  id: 2
+})
 // unsubscribe();
 store.dispatch({
   type: 'ADD_MOVIE',
@@ -89,6 +111,11 @@ store.dispatch({
   title: 'Inception',
   genre: 'Thriller'
 });
+store.dispatch({
+  type: 'REMOVE_MOVIE',
+  id: 1
+});
+
 
 //console.log('Name should be Andrés', store.getState());
 store.dispatch({
